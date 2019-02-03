@@ -1,5 +1,9 @@
 package com.amirdolkhani.hrs;
 
+import com.amirdolkhani.hrs.entity.Employee;
+import com.amirdolkhani.hrs.interactive.EmployeeDataSource;
+import com.amirdolkhani.hrs.repository.MySQLEmployeeRepository;
+
 /**
  * Hello world!
  *
@@ -7,10 +11,21 @@ package com.amirdolkhani.hrs;
 public class App 
 {
     public static void main( String[] args ) {
-        // receive emplyee infprmation via console and print it on screen
-        //1. Store employee information
-        //2. get employee inf
-        //3.
+
+        EmployeeDataSource employeeDataSource = new EmployeeDataSource();
+
+
+        Employee employee = employeeDataSource.getEmployeeInformation();
+
+        //StdOutEmployeeRepository stdOutEmployeeRepository = new StdOutEmployeeRepository();
+        //stdOutEmployeeRepository.save(employee);
+
+        MySQLEmployeeRepository mySQLEmployeeRepository = new MySQLEmployeeRepository();
+        mySQLEmployeeRepository.save(employee);
 
     }
 }
+
+
+// Show information on console
+// Save inform in stdout employee
