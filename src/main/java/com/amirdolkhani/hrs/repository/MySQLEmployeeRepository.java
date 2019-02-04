@@ -18,23 +18,21 @@ public class MySQLEmployeeRepository {
 
             Connection myConn = null;
             PreparedStatement myStmt = null;
-            ResultSet myRs = null;
 
             // 1: Get a connection to datsbase
             myConn = DriverManager.getConnection(url, user, password);
             // 2: Create a prepared   statement
-            myStmt = myConn.prepareStatement("INSERT into employee VALUES(?, ?, ?, ?, ?, ?");
+            myStmt = myConn.prepareStatement("INSERT into employee VALUES(?, ?, ?, ?, ?, ?)");
             // 3: Set the parameters
             myStmt.setString(1,randomUUIDString);
             myStmt.setString(2,employee.getName());
             myStmt.setString(3,employee.getLastName());
             myStmt.setString(4,employee.getSocialSecurityNumber());
-            myStmt.setString(4,employee.getBirthday());
-            myStmt.setDouble(5,employee.getSalary());
+            myStmt.setString(5,employee.getBirthday());
+            myStmt.setDouble(6,employee.getSalary());
             // 4: Execute SQL query
-            myRs = myStmt.executeQuery();
-
-
+            myStmt.executeUpdate();
+            myStmt.close();
 
         }
         catch(SQLException e)
